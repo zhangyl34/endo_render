@@ -1,0 +1,11 @@
+state_space:
+  heap:
+    objects:
+      mesh_dir: models
+    
+  camera:
+    name: camera
+
+    im_width: 1920                           # Image size
+    im_height: 1080
+    focal_length: 585.4076                   # Camera intrinsics: fx and fy
