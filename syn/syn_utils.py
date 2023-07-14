@@ -10,19 +10,6 @@ def rotz(t):
                      [s,  c,  0],
                      [0,  0,  1]])
 
-# 返回 8,3 矩阵，储存 8 个角点坐标
-def compute_box_3d(center, size, heading_angle):
-    R = rotz(-1*heading_angle)
-    l,w,h = size
-    x_corners = [-l/2,l/2,l/2,-l/2,-l/2,l/2,l/2,-l/2]
-    y_corners = [w/2,w/2,-w/2,-w/2,w/2,w/2,-w/2,-w/2]
-    z_corners = [h/2,h/2,h/2,h/2,-h/2,-h/2,-h/2,-h/2]
-    corners_3d = np.dot(R, np.vstack([x_corners, y_corners, z_corners]))
-    corners_3d[0,:] += center[0]
-    corners_3d[1,:] += center[1]
-    corners_3d[2,:] += center[2]
-    return np.transpose(corners_3d)
-
 def in_hull(p, hull):
     ''' input:
     p: (N,3)
@@ -40,17 +27,6 @@ def extract_pc_in_box3d(pc, box3d):
 
 
 # copy from mask.py
-def add_endeffector(tools: dict):
-    for tool in tools:
-        tools[tool]['only_stem'] = False
-    return tools
-
-# copy from mask.py
-def delete_endeffector(tools: dict):
-    for tool in tools:
-        tools[tool]['only_stem'] = True
-    return tools
-
 def quat2R(quat):
     assert len(quat) == 4
     mat = R.from_quat(quat).as_matrix()

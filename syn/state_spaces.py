@@ -34,9 +34,8 @@ class CameraStateSpace(gym.Space):
 class HeapStateSpace(gym.Space):
     """State space for object heaps."""
 
-    def __init__(self, physics_engine, config):
+    def __init__(self, config):
 
-        self._physics_engine = physics_engine
         self._config = config  # heap
 
         # set up logger
@@ -65,8 +64,7 @@ class HeapStateSpace(gym.Space):
             state of the object pile
         """
 
-        # # Start physics engine
-        # self._physics_engine.start()
+
 
         """ setup workspace."""
         workspace_obj_states = []
@@ -116,7 +114,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4
             workspace_obj = ObjectState('shuangji1', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 2
@@ -145,7 +142,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5*T6
             workspace_obj = ObjectState('shuangji2', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 3
@@ -174,7 +170,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5*T6
             workspace_obj = ObjectState('shuangji3', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 4
@@ -215,7 +210,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5*T6*T7*T8
             workspace_obj = ObjectState('shuangji4', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 5
@@ -238,7 +232,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5
             workspace_obj = ObjectState('shuangji5', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 6
@@ -261,7 +254,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5
             workspace_obj = ObjectState('shuangji6', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 7
@@ -284,7 +276,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5
             workspace_obj = ObjectState('shuangji7', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 8
@@ -307,7 +298,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5
             workspace_obj = ObjectState('shuangji8', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 9
@@ -336,7 +326,6 @@ class HeapStateSpace(gym.Space):
             )
             pose =T0*T1*T2*T3*T4*T5*T6
             workspace_obj = ObjectState('shuangji9', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 10
@@ -359,7 +348,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5
             workspace_obj = ObjectState('shuangji10', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 11
@@ -382,7 +370,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5
             workspace_obj = ObjectState('shuangji11', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 12
@@ -405,7 +392,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5
             workspace_obj = ObjectState('shuangji12', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
         if "zuzhi" in tools:
@@ -460,7 +446,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5
             workspace_obj = ObjectState('zuzhi1', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 2
@@ -495,7 +480,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5*T6*T7
             workspace_obj = ObjectState('zuzhi2', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 3
@@ -530,7 +514,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5*T6*T7
             workspace_obj = ObjectState('zuzhi3', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 4
@@ -559,7 +542,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5*T6
             workspace_obj = ObjectState('zuzhi4', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
 
@@ -583,7 +565,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5
             workspace_obj = ObjectState('zuzhi5', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 6
@@ -606,7 +587,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5
             workspace_obj = ObjectState('zuzhi6', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
             # 7
@@ -629,7 +609,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5
             workspace_obj = ObjectState('zuzhi7', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)
 
         if "chizhen" in tools:
@@ -691,7 +670,6 @@ class HeapStateSpace(gym.Space):
             if not is_mask:
                 pose = T0*T1*T2*T3*T4*T5*T6
                 workspace_obj = ObjectState('chizhen1', mesh, pose)
-                # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
                 workspace_obj_states.append(workspace_obj)
 
             # 2
@@ -721,7 +699,6 @@ class HeapStateSpace(gym.Space):
             if not is_mask:
                 pose = T0*T1*T2*T3*T4*T5*T6
                 workspace_obj = ObjectState('chizhen2', mesh, pose)
-                # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
                 workspace_obj_states.append(workspace_obj)
                         
             # 3
@@ -763,7 +740,6 @@ class HeapStateSpace(gym.Space):
             if not is_mask:
                 pose = T0*T1*T2*T3*T4*T5*T6*T7*T8
                 workspace_obj = ObjectState('chizhen3', mesh, pose)
-                # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
                 workspace_obj_states.append(workspace_obj)
 
             # 4
@@ -805,7 +781,6 @@ class HeapStateSpace(gym.Space):
             if not is_mask:
                 pose = T0*T1*T2*T3*T4*T5*T6*T7*T8
                 workspace_obj = ObjectState('chizhen4', mesh, pose)
-                # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
                 workspace_obj_states.append(workspace_obj)
             
             # 5
@@ -829,7 +804,6 @@ class HeapStateSpace(gym.Space):
             if not is_mask:
                 pose = T0*T1*T2*T3*T4*T5
                 workspace_obj = ObjectState('chizhen5', mesh, pose)
-                # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
                 workspace_obj_states.append(workspace_obj)
 
             # 6
@@ -853,7 +827,6 @@ class HeapStateSpace(gym.Space):
             if not is_mask:
                 pose = T0*T1*T2*T3*T4*T5
                 workspace_obj = ObjectState('chizhen6', mesh, pose)
-                # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
                 workspace_obj_states.append(workspace_obj)
 
             # 7
@@ -877,7 +850,6 @@ class HeapStateSpace(gym.Space):
             if not is_mask:
                 pose = T0*T1*T2*T3*T4*T5
                 workspace_obj = ObjectState('chizhen7', mesh, pose)
-                # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
                 workspace_obj_states.append(workspace_obj)
         
             # 8
@@ -906,7 +878,6 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5*T6
             workspace_obj = ObjectState('chizhen8', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj)  
 
             # 9
@@ -929,11 +900,7 @@ class HeapStateSpace(gym.Space):
             )            
             pose = T0*T1*T2*T3*T4*T5
             workspace_obj = ObjectState('chizhen9', mesh, pose)
-            # self._physics_engine.add(workspace_obj, static=True)  # 加到环境中，不做动态仿真。
             workspace_obj_states.append(workspace_obj) 
-
-        # Stop physics engine
-        # self._physics_engine.stop()
 
         return HeapState(workspace_obj_states)
 
@@ -941,13 +908,13 @@ class HeapStateSpace(gym.Space):
 class HeapAndCameraStateSpace(gym.Space):
     """State space for environments."""
 
-    def __init__(self, physics_engine, config):
+    def __init__(self, config):
 
         heap_config = config["heap"]
         cam_config = config["camera"]
 
         # individual state spaces
-        self.heap = HeapStateSpace(physics_engine, heap_config)
+        self.heap = HeapStateSpace(heap_config)
         self.camera = CameraStateSpace(cam_config)
 
     @property

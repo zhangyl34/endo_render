@@ -19,11 +19,11 @@ class CameraRandomVariable(object):
         """Reads parameters from the config into class members."""
         # camera params
         self.frame = config["name"]                 # camera
-        self.focal_length = config["focal_length"]  # 365
-        self.im_height = config["im_height"]        # 512
-        self.im_width = config["im_width"]          # 512
-        self.mean_cx = float(self.im_width - 1) / 2.0
-        self.mean_cy = float(self.im_height - 1) / 2.0
+        self.focal_length = config["focal_length"]
+        self.im_height = config["im_height"]
+        self.im_width = config["im_width"]
+        self.mean_cx = float(self.im_width) / 2.0
+        self.mean_cy = float(self.im_height) / 2.0
 
     def camera_to_world_pose(self):
         """Convert spherical coords to a camera pose in the world."""
@@ -58,9 +58,9 @@ class CameraRandomVariable(object):
         samples = []
         for i in range(size):
             # sample camera params
-            focal = self.focal_length  # 365
-            cx = self.mean_cx          # 255.5?
-            cy = self.mean_cy          # 255.5?
+            focal = self.focal_length 
+            cx = self.mean_cx   
+            cy = self.mean_cy    
 
             # convert to pose and intrinsics
             pose = self.camera_to_world_pose()

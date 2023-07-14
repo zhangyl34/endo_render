@@ -13,7 +13,6 @@ from pyrender import (
     Viewer,
 )
 
-from .physics_engine import PybulletPhysicsEngine
 from .state_spaces import HeapAndCameraStateSpace
 
 
@@ -29,12 +28,7 @@ class BinHeapEnv(gym.Env):
         # initialize variables
         self._state = None
         self._scene = None
-        self._physics_engine = PybulletPhysicsEngine(
-            debug=config["debug"]
-        )
-        self._state_space = HeapAndCameraStateSpace(
-            self._physics_engine, self._state_space_config
-        )
+        self._state_space = HeapAndCameraStateSpace(self._state_space_config)
 
     # @property
     # def config(self):
