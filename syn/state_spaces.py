@@ -56,7 +56,7 @@ class HeapStateSpace(gym.Space):
     def obj_keys(self):
         return self.all_object_keys
 
-    def sample(self, tools: dict, is_mask: bool):
+    def sample(self, tools: dict, is_mask: bool, is_mask2: bool):
         """Samples a state from the space
         Returns
         -------
@@ -737,7 +737,7 @@ class HeapStateSpace(gym.Space):
                 from_frame="chizhen3_8",
                 to_frame="chizhen3_7",
             )
-            if not is_mask:
+            if (not is_mask) or is_mask2:
                 pose = T0*T1*T2*T3*T4*T5*T6*T7*T8
                 workspace_obj = ObjectState('chizhen3', mesh, pose)
                 workspace_obj_states.append(workspace_obj)
@@ -778,7 +778,7 @@ class HeapStateSpace(gym.Space):
                 from_frame="chizhen4_8",
                 to_frame="chizhen4_7",
             )
-            if not is_mask:
+            if (not is_mask) or is_mask2:
                 pose = T0*T1*T2*T3*T4*T5*T6*T7*T8
                 workspace_obj = ObjectState('chizhen4', mesh, pose)
                 workspace_obj_states.append(workspace_obj)
@@ -801,7 +801,7 @@ class HeapStateSpace(gym.Space):
                 from_frame="chizhen5_5",
                 to_frame="chizhen5_4",
             )
-            if not is_mask:
+            if (not is_mask) or is_mask2:
                 pose = T0*T1*T2*T3*T4*T5
                 workspace_obj = ObjectState('chizhen5', mesh, pose)
                 workspace_obj_states.append(workspace_obj)
@@ -824,7 +824,7 @@ class HeapStateSpace(gym.Space):
                 from_frame="chizhen6_5",
                 to_frame="chizhen6_4",
             )
-            if not is_mask:
+            if (not is_mask) or is_mask2:
                 pose = T0*T1*T2*T3*T4*T5
                 workspace_obj = ObjectState('chizhen6', mesh, pose)
                 workspace_obj_states.append(workspace_obj)
@@ -847,7 +847,7 @@ class HeapStateSpace(gym.Space):
                 from_frame="chizhen7_5",
                 to_frame="chizhen7_4",
             )
-            if not is_mask:
+            if (not is_mask) or is_mask2:
                 pose = T0*T1*T2*T3*T4*T5
                 workspace_obj = ObjectState('chizhen7', mesh, pose)
                 workspace_obj_states.append(workspace_obj)
@@ -878,7 +878,7 @@ class HeapStateSpace(gym.Space):
             )
             pose = T0*T1*T2*T3*T4*T5*T6
             workspace_obj = ObjectState('chizhen8', mesh, pose)
-            workspace_obj_states.append(workspace_obj)  
+            workspace_obj_states.append(workspace_obj)
 
             # 9
             mesh_filename = os.path.join(mesh_dirname, '../lianxutibi/continuum_1_' + str(tools['chizhen']['theta_1']) + '.obj')
@@ -897,10 +897,10 @@ class HeapStateSpace(gym.Space):
                 translation=np.array([0,0,-1]),
                 from_frame="chizhen9_5",
                 to_frame="chizhen9_4",
-            )            
+            )
             pose = T0*T1*T2*T3*T4*T5
             workspace_obj = ObjectState('chizhen9', mesh, pose)
-            workspace_obj_states.append(workspace_obj) 
+            workspace_obj_states.append(workspace_obj)
 
         return HeapState(workspace_obj_states)
 
@@ -921,10 +921,10 @@ class HeapAndCameraStateSpace(gym.Space):
     def obj_keys(self):
         return self.heap.obj_keys
 
-    def sample(self, tools: dict, is_mask: bool):
+    def sample(self, tools: dict, is_mask: bool, is_mask2: bool):
         """Sample a state."""
         # sample individual states
-        heap_state = self.heap.sample(tools, is_mask)
+        heap_state = self.heap.sample(tools, is_mask, is_mask2)
         cam_state = self.camera.sample()  # 假 sample
 
         return HeapAndCameraState(heap_state, cam_state)

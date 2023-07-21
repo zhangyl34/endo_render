@@ -10,6 +10,6 @@ state_space:
     
   camera:
     name: camera
-    im_width: 480
-    im_height: 270
-    focal_length: 298.51807225  # fx and fy
+    im_width: 960 # 480*2
+    im_height: 540 # 270*2
+    focal_length: 597.0361445 # 298.51807225*2  # fx and fy

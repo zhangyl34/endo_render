@@ -46,9 +46,9 @@ class BinHeapEnv(gym.Env):
     def obj_keys(self):
         return self.state.obj_keys
 
-    def _reset_state_space(self, tools: dict, is_mask: bool):
+    def _reset_state_space(self, tools: dict, is_mask: bool, is_mask2: bool):
         """Sample a new static and dynamic state."""
-        state = self._state_space.sample(tools, is_mask)
+        state = self._state_space.sample(tools, is_mask, is_mask2)
         self._state = state.heap
         self._camera = state.camera
 
@@ -139,11 +139,11 @@ class BinHeapEnv(gym.Env):
 
         return self._camera.pose
 
-    def reset(self, tools: dict, is_mask = False):
+    def reset(self, tools: dict, is_mask = False, is_mask2 = False):
         """Reset the environment."""
 
         # reset state space
-        self._reset_state_space(tools, is_mask)
+        self._reset_state_space(tools, is_mask, is_mask2)
 
         # reset scene
         self._reset_scene()
